@@ -4,10 +4,19 @@
  :deps
  {cheshire/cheshire   {:mvn/version "5.10.0"}
   com.wsscode/pathom3 {:mvn/version "2022.10.19-alpha"}
-  org.clojure/clojure {:mvn/version "1.11.1"}
+  org.clojure/clojure {:mvn/version "1.12.0"}
   http-kit/http-kit   {:mvn/version "2.5.3"}}
 
- :aliases
- {:ip-weather
-  {:exec-fn com.wsscode.pathom3.demos.ip-weather/main}}}
+ :aliases 
+ {:dev 
+  {;; for disabling the official compiler
+   :classpath-overrides {org.clojure/clojure nil}
+   :extra-deps {com.github.flow-storm/clojure {:mvn/version "1.12.0-2"}
+                com.github.flow-storm/flow-storm-dbg {:mvn/version "4.0.2"}}
+   :jvm-opts ["-Dclojure.storm.instrumentEnable=true"
+              "-Dclojure.storm.instrumentOnlyPrefixes=demos,com.wsscode.pathom3"]}
+  :ip-weather 
+  {:exec-fn demos.ip-weather/main}
+  }
+ }
 

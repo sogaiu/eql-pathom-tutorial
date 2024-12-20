@@ -1,4 +1,4 @@
-(ns com.wsscode.pathom3.demos.ip-weather
+(ns demos.ip-weather
   (:require
    [cheshire.core :as json]
    [com.wsscode.pathom3.connect.indexes :as pci]
